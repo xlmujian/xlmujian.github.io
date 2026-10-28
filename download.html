@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>下载 幕间 Interlude</title>
+    <meta name="description" content="下载幕间：Windows 桌面版，本地运行，对话只存在你自己的电脑上。" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="index.html">幕间<span>INTERLUDE</span></a>
+        <nav>
+          <a href="index.html#features">能做什么</a>
+          <a href="download.html" aria-current="page">下载</a>
+          <a href="notes.html">更新</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="page-head">
+          <p class="eyebrow-vertical">Windows 桌面版</p>
+          <div>
+            <h1>下载</h1>
+            <p class="lede">
+              安装包约 129 MB，支持 Windows 10 / 11。装好后在设置里填自己的 API 密钥就能开始，不需要注册账号。
+            </p>
+            <div class="cta-row">
+              <a class="button" href="download/Interlude-Setup.exe" download>
+                下载最新版
+                <small id="version-line">0.1.0</small>
+              </a>
+              <a class="link-quiet" href="notes.html">看这次改了什么</a>
+            </div>
+            <p class="fineprint" id="feed-line"></p>
+          </div>
+        </section>
+
+        <section class="facts">
+          <div class="fact">
+            <h3>系统要求</h3>
+            <p>Windows 10 1809 或更新版本、Windows 11。64 位。约 300 MB 磁盘空间。</p>
+          </div>
+          <div class="fact">
+            <h3>安装</h3>
+            <p>
+              双击安装包，一路下一步。首次启动会引导你填接口地址、模型名和密钥，也可以之后再改。
+            </p>
+          </div>
+          <div class="fact">
+            <h3>数据位置</h3>
+            <p>
+              角色、对话、世界书都在 <code>%APPDATA%\Interlude</code>。备份就是把整个文件夹拷走。
+            </p>
+          </div>
+          <div class="fact">
+            <h3>升级</h3>
+            <p>
+              装了之后在「设置 → 关于」里点检查更新，有新版本会告诉你。也可以直接回来重新下载覆盖安装，数据不会丢。
+            </p>
+          </div>
+        </section>
+
+        <section class="note-block">
+          <h2>关于密钥</h2>
+          <p>
+            幕间不自带模型，也不转卖额度。你在设置里填自己的接口地址和密钥，请求从你的电脑直接发到模型服务商。程序不会把密钥或对话发到别处。
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>幕间 Interlude · 本地角色扮演客户端</span>
+        <span><a href="index.html">回到首页</a></span>
+      </footer>
+    </div>
+
+    <script>
+      // 版本号与更新信息都来自 latest.json，和客户端检查更新读的是同一个文件
+      fetch('latest.json', { cache: 'no-store' })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((data) => {
+          if (!data) return
+          if (data.version) {
+            const line = document.getElementById('version-line')
+            if (line) line.textContent = data.version
+          }
+          if (data.publishedAt) {
+            const feed = document.getElementById('feed-line')
+            if (feed) feed.textContent = data.publishedAt + ' 发布'
+          }
+        })
+        .catch(() => {})
+    </script>
+  </body>
+</html>
