@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>更新日志 幕间 Interlude</title>
+    <meta name="description" content="幕间的版本更新记录。" />
+    <link rel="stylesheet" href="site.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header>
+        <a class="brand" href="index.html">幕间<span>INTERLUDE</span></a>
+        <nav>
+          <a href="index.html#features">能做什么</a>
+          <a href="download.html">下载</a>
+          <a href="notes.html" aria-current="page">更新</a>
+        </nav>
+      </header>
+
+      <main>
+        <section class="page-head">
+          <p class="eyebrow-vertical">版本记录</p>
+          <div>
+            <h1>更新日志</h1>
+            <p class="lede">
+              当前版本 <span id="current-version">0.1.0</span>。客户端会在「设置 → 关于」里检查更新，读的就是这个页面上的版本号。
+            </p>
+          </div>
+        </section>
+
+        <section>
+          <article class="release">
+            <time datetime="2026-10-28">2026-10-28</time>
+            <div>
+              <h3>0.1.0 · 首个公开版本</h3>
+              <ul>
+                <li>长期记忆：你说过什么、发生过什么、角色心里怎么想，分三层记录</li>
+                <li>前因后果：角色的处境、承诺和未了的事会被记下来并带入下一轮</li>
+                <li>内心与事件：角色每轮的内心、手上待办的事，都会被记录</li>
+                <li>多路同时生成：一次生成多个版本挑一个，切走也不中断</li>
+                <li>每个对话单独设置模型与思考强度</li>
+                <li>整库备份：每天首次启动自动备份，保留最近 10 份</li>
+              </ul>
+            </div>
+          </article>
+        </section>
+
+        <section class="note-block">
+          <h2>怎么升级</h2>
+          <p>
+            回下载页重新下载覆盖安装即可，角色、对话和记忆都会保留。安装包不会动 <code>%APPDATA%\Interlude</code> 里的数据。
+          </p>
+        </section>
+      </main>
+
+      <footer>
+        <span>幕间 Interlude · 本地角色扮演客户端</span>
+        <span><a href="download.html">去下载</a></span>
+      </footer>
+    </div>
+
+    <script>
+      fetch('latest.json', { cache: 'no-store' })
+        .then((response) => (response.ok ? response.json() : null))
+        .then((data) => {
+          if (data && data.version) {
+            const el = document.getElementById('current-version')
+            if (el) el.textContent = data.version
+          }
+        })
+        .catch(() => {})
+    </script>
+  </body>
+</html>
