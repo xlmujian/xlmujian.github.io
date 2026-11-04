@@ -1,7 +1,7 @@
 {
-  "version": "0.2.1",
+  "version": "0.2.2",
   "url": "https://xuanlin.xin/api/download",
-  "notes": "新增「关于」页：版本、运行环境、检查更新与反馈方式；数据页移除版本块。",
+  "notes": "改名 Nova：窗口标题、标题栏、关于页与安装包统一更换；数据目录保持不变。",
   "publishedAt": "2026-11-04",
   "sizeMB": 767
 }
