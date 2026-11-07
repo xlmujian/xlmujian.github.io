@@ -1,7 +1,7 @@
 {
-  "version": "0.2.2",
+  "version": "0.3.0",
   "url": "https://xuanlin.xin/api/download",
-  "notes": "改名 Nova：窗口标题、标题栏、关于页与安装包统一更换；数据目录保持不变。",
-  "publishedAt": "2026-11-04",
-  "sizeMB": 767
+  "notes": "角色数据库：每个角色独立的资料库，支持长文分块、本地向量检索与显卡重排；角色卡 V4 可以携带资料一并导入。",
+  "publishedAt": "2026-11-07",
+  "sizeMB": 1463
 }
